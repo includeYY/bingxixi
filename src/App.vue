@@ -1,20 +1,20 @@
 <template>
   <div id="app">
+    <navigation v-bind:is-login="false" />
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <HelloBoot />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import HelloBoot from './components/HelloBootStrap.vue'
+import Navigation from './components/Navigation.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
-    HelloBoot
+    Navigation,
+    HelloWorld
   }
 }
 </script>
@@ -26,6 +26,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
