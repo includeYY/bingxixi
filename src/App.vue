@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <navigation v-bind:is-login="false" />
+    <classify />
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Navigation from './components/Navigation.vue'
+import Classify from './components/Classify.vue'
 
 export default {
   name: 'app',
   components: {
     Navigation,
-    HelloWorld
+    Classify
   }
 }
 </script>
