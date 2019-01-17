@@ -10,13 +10,13 @@
                   <td rowspan="3">
                     <img v-bind:src="bill.imgsrc">
                   </td>
-                  <td>{{bill.product}}</td>
+                  <td class="text-left" id="product-name">{{bill.product}}</td>
                 </tr>
                 <tr>
-                  <td>{{bill.shop}}</td>
+                  <td class="text-left">{{bill.shop}}</td>
                 </tr>
                 <tr>
-                  <td>{{bill.target}}</td>
+                  <td class="text-left text-danger">{{bill.target}}</td>
                 </tr>
               </tbody>
             </table>
@@ -39,7 +39,7 @@ export default {
 <style>
 .table {
   table-layout: fixed;
-  border: 0px;
+  border: none;
 }
 
 .table td {
@@ -50,6 +50,11 @@ export default {
 
 .table > tbody > tr > td {
     border: 0px;
+}
+
+#product-name {
+  font-weight: bold;
+  font-size: 120%;
 }
 
 </style>

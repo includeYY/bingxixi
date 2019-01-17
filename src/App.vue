@@ -20,32 +20,32 @@ var mBills = [
     target: '满30减10'
   },
   {
-    id: 0,
+    id: 1,
     imgsrc: require('./assets/jingdong.jpg'),
     product: '汉堡王',
-    shop: '饿了么',
+    shop: '京东',
     target: '满30减10'
   },
   {
-    id: 0,
+    id: 2,
     imgsrc: require('./assets/meituan.jpg'),
-    product: '汉堡王',
-    shop: '饿了么',
+    product: '香河肉饼',
+    shop: '美团',
     target: '满30减10'
   },
   {
-    id: 0,
+    id: 3,
     imgsrc: require('./assets/taobao.jpg'),
-    product: '汉堡王',
-    shop: '饿了么',
-    target: '满30减10'
+    product: 'MH世界',
+    shop: '淘宝',
+    target: '买二送一'
   },
   {
-    id: 0,
+    id: 4,
     imgsrc: require('./assets/jingdong.jpg'),
-    product: '汉堡王',
-    shop: '饿了么',
-    target: '满30减10'
+    product: 'IKBC',
+    shop: '京东',
+    target: '满499减200'
   }
 ]
 
