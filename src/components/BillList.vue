@@ -1,9 +1,9 @@
 <template>
-  <div class="panel panel-default">
+  <div class="pc-panel panel panel-default">
     <div class="panel-body">
       <div class="container">
         <div class="row">
-          <div v-for="bill in bills" v-bind:key="bill.id" class="col-xs-6 col-md-3">
+          <div v-for="bill in bills" v-bind:key="bill.id" class="col-xs-12 col-md-3">
             <table class="table">
               <tbody>
                 <tr>

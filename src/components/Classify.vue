@@ -1,15 +1,15 @@
 <template>
-  <div class="panel panel-default">
+  <div class="pc-panel panel panel-default visible-lg visible-md">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table classify-table">
         <tbody>
           <tr>
             <td class="text-center">商家分类：</td>
+            <td><classify-button shop-name="全部"/></td>
             <td><classify-button shop-name="美团"/></td>
             <td><classify-button shop-name="饿了么"/></td>
             <td><classify-button shop-name="淘宝"/></td>
             <td><classify-button shop-name="京东"/></td>
-            <td><classify-button shop-name="其他"/></td>
           </tr>
         </tbody>
       </table>
@@ -30,12 +30,7 @@ export default {
 
 <style>
 
-.panel {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.table tbody tr td {
+.classify-table tbody tr td {
   vertical-align: middle;
 }
 

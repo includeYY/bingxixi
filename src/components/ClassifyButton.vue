@@ -1,5 +1,6 @@
 <template>
-  <button type="button" v-on:click="ChangeState" class="btn btn-default">{{ShopName}}</button>
+  <button type="button" v-on:click="ChangeState" v-if="ShopName == '全部'" class="btn btn-default active">{{ShopName}}</button>
+  <button type="button" v-on:click="ChangeState" v-else class="btn btn-default">{{ShopName}}</button>
 </template>
 
 <script>

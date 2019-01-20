@@ -1,43 +1,157 @@
 <template>
-  <div class="navigation">
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle"
-            data-toggle="collapse"
-            data-target="#my-navigation"
-          >
-            <span class="sr-only">切换导航</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">并夕夕</a>
+  <div>
+    <div class="navigation">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#my-navigation"
+            >
+              <span class="sr-only">切换导航</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">并夕夕</a>
+          </div>
+          <div class="collapse navbar-collapse" id="my-navigation">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a v-if="isLogin" href="#">我的</a>
+                <a v-else data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#loginModal">登录/注册</a>
+              </li>
+              <li>
+                <a v-if="isLogin" href="#">注销</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="collapse navbar-collapse" id="my-navigation">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a v-if="isLogin" href="#">我的</a>
-              <a v-else href="#">登录</a>
-            </li>
-            <li>
-              <a v-if="isLogin" href="#">注销</a>
-              <a v-else href="#">注册</a>
-            </li>
-          </ul>
+      </nav>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLable" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs nav-justified">
+              <li><a href="#login" data-toggle="tab">登录</a></li>
+              <li><a href="#register" data-toggle="tab">注册</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade in active" id="login">
+                <form class="form-horizontal login-form" role="form">
+                  <div class="form-group has-feedback">
+                    <label for="username-login" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                      <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
+                      <input type="text" class="form-control" id="username-login" placeholder="请输入用户名">
+                    </div>
+                  </div>
+                  <div class="form-group has-feedback">
+                    <label for="password-login" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                    <div class="col-sm-10">
+                      <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
+                      <input type="text" class="form-control" id="password-login" placeholder="请输入密码">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <button type="button" class="btn btn-success login-button">登录</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="register">
+                <form class="form-horizontal login-form" id="login" role="form">
+                  <div class="form-group has-feedback">
+                    <label for="username-register" class="col-sm-2 control-label">用&nbsp;户&nbsp;&nbsp;名</label>
+                    <div class="col-sm-10">
+                      <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
+                      <input type="text" class="form-control" id="username-register" placeholder="请输入用户名">
+                    </div>
+                  </div>
+                  <div class="form-group has-feedback">
+                    <label for="password" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                    <div class="col-sm-10">
+                      <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
+                      <input type="password" class="form-control" id="password" placeholder="请输入密码">
+                    </div>
+                  </div>
+                  <div class="form-group has-feedback">
+                    <label for="password-again" class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-sm-10">
+                      <span class="glyphicon form-control-feedback" v-bind:class="ConfirmPassword" aria-hidden="true"></span>
+                      <input type="password" class="form-control" id="password-again" placeholder="请再次输入密码">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <button type="button" v-on:click="UserRegister" class="btn btn-success login-button">注册</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
+
 export default {
   name: 'navigation',
+  data () {
+    return {
+      isSame: true
+    }
+  },
+  methods: {
+    UserRegister: function () {
+      this.isSame = $('#password').val() === $('#password-again').val()
+    }
+  },
+  computed: {
+    ConfirmPassword: function () {
+      return {
+        'glyphicon-ok': this.isSame,
+        'glyphicon-remove': !this.isSame
+      }
+    }
+  },
   props: {
     isLogin: Boolean
   }
 }
 </script>
+
+<style>
+.modal.fade.in {
+  top: 100px;
+}
+
+.login-button {
+  width: 100%;
+}
+
+.modal-header {
+  border: none;
+  height: 10px;
+  margin-bottom: 0px;
+}
+
+.login-form {
+  margin-top: 25px;
+}
+
+</style>
