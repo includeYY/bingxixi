@@ -20,7 +20,7 @@
           <div class="collapse navbar-collapse" id="my-navigation">
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a v-if="isLogin" href="#">我的</a>
+                <router-link v-if="isLogin" to="/user">我的</router-link>
                 <a v-else data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#loginModal">登录/注册</a>
               </li>
               <li>
