@@ -20,7 +20,7 @@ const routers = [
     component: UserSpace,
     children: [
       {
-        path: 'info',
+        path: '',
         component: UserInfo
       },
       {
