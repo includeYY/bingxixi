@@ -4,7 +4,7 @@ import MainWindow from '../components/MainWindow.vue'
 import UserSpace from '../components/UserSpace.vue'
 import UserInfo from '../components/UserInfo.vue'
 import Message from '../components/Message.vue'
-import BillInfo from '../components/BillInfo.vue'
+import BillList from '../components/BillList.vue'
 
 Vue.use(Router)
 
@@ -29,7 +29,7 @@ const routers = [
       },
       {
         path: 'bill-info',
-        component: BillInfo
+        component: BillList
       }
     ]
   }
