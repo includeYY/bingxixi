@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active sidebar-btn" v-on:click="ChangeState"><router-link to="/user/info">资料设置</router-link></li>
+            <li class="active sidebar-btn" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
             <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
             <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
             <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">已经结束的拼单</router-link></li>
