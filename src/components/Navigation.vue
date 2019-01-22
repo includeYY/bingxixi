@@ -27,6 +27,14 @@
                 <a v-if="isLogin" href="#">注销</a>
               </li>
             </ul>
+            <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="拼单名称">
+              </div>
+              <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+            </form>
           </div>
         </div>
       </nav>
