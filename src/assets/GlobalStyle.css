@@ -1,0 +1,36 @@
+.table {
+  table-layout: fixed;
+  border: none;
+}
+  
+.table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table > tbody > tr > td {
+  border: 0px;
+}
+
+.modal.fade.in {
+  top: 100px;
+}
+
+.modal-header {
+  border: none;
+  height: 10px;
+  margin-bottom: 0px;
+}
+
+.panel {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+@media (min-width: 992px) {
+  .panel {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
