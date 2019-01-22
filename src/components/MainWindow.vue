@@ -1,6 +1,6 @@
 <template>
   <div id="main-window">
-    <navigation v-bind:is-login="true" />
+    <navigation v-bind:is-login="false" />
     <classify />
     <bill-list v-bind:bills="bills"/>
   </div>

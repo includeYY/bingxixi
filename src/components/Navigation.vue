@@ -58,12 +58,12 @@
                     <label for="password-login" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                     <div class="col-sm-10">
                       <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
-                      <input type="text" class="form-control" id="password-login" placeholder="请输入密码">
+                      <input type="password" class="form-control" id="password-login" placeholder="请输入密码">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <button type="button" class="btn btn-success login-button">登录</button>
+                      <button type="button" v-on:click="LoginClick" class="btn btn-success login-button" data-dismiss="modal">登录</button>
                     </div>
                   </div>
                 </form>
@@ -108,17 +108,27 @@
 
 <script>
 import $ from 'jquery'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'navigation',
   data () {
     return {
-      isSame: true
+      isSame: true,
+      isLogin: false
     }
   },
   methods: {
     UserRegister: function () {
       this.isSame = $('#password').val() === $('#password-again').val()
+    },
+    LoginClick: function () {
+      var username = $('#username-login').val()
+      var password = $('#password-login').val()
+      Cookies.set('username', username)
+      Cookies.set('password', password)
+      console.log(Cookies.get('username'))
+      this.isLogin = true
     }
   },
   computed: {
@@ -128,26 +138,14 @@ export default {
         'glyphicon-remove': !this.isSame
       }
     }
-  },
-  props: {
-    isLogin: Boolean
   }
 }
 </script>
 
-<style>
-.modal.fade.in {
-  top: 100px;
-}
+<style scrop>
 
 .login-button {
   width: 100%;
-}
-
-.modal-header {
-  border: none;
-  height: 10px;
-  margin-bottom: 0px;
 }
 
 .login-form {
