@@ -33,7 +33,9 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <router-view></router-view>
+          <transition name="right-fade">
+            <router-view></router-view>
+          </transition>
         </div>
       </div>
     </div>
@@ -54,3 +56,14 @@ export default {
   }
 }
 </script>
+
+<style>
+.right-fade-enter-active {
+  transition: all .5s ease;
+}
+.right-fade-enter
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+</style>
