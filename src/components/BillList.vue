@@ -1,5 +1,5 @@
 <template>
-  <div class="pc-panel panel panel-default">
+  <div class="pc-panel panel panel-default bill-panel">
     <div class="panel-body">
       <div class="container">
         <div class="row">
@@ -36,20 +36,18 @@ export default {
 }
 </script>
 
-<style>
-.table {
-  table-layout: fixed;
-  border: none;
+<style scrope>
+
+.bill-panel {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-.table td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.table > tbody > tr > td {
-    border: 0px;
+@media (min-width: 992px) {
+  .bill-panel {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 }
 
 #product-name {
