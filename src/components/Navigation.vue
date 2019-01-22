@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="navigation">
-      <nav class="navbar navbar-default" role="navigation">
+      <nav class="navbar navbar-default visible-lg visible-md" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
             <button
@@ -36,6 +36,17 @@
               </button>
             </form>
           </div>
+        </div>
+      </nav>
+
+      <nav class="navbar navbar-default mobile-searchbar visible-xs visible-sm" role="navigation">
+        <div class="container-fluid">
+          <form class="navbar-form searchbar-form" role="search">
+            <div class="form-group has-feedback searchbar-form">
+              <input type="text" class="form-control" placeholder="输入拼单信息">
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+          </form>
         </div>
       </nav>
     </div>
@@ -158,6 +169,17 @@ export default {
 
 .login-form {
   margin-top: 25px;
+}
+
+.mobile-searchbar {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.searchbar-form {
+  border: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 </style>
