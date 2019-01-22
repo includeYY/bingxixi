@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <navigation v-bind:is-login="false" />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Navigation from './components/Navigation.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Navigation
+  }
 }
 </script>
 
