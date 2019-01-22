@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import routers from './router/router'
 import Cookies from 'js-cookie'
 import './assets/GlobalStyle.css'
+import './assets/NavBarStyle.css'
 
 Vue.config.productionTip = false
 Vue.use(Router)
