@@ -1,8 +1,17 @@
+const webpack = require('webpack')
+
 module.exports = {
   devServer: {
     port: 8080
   },
   configureWebpack: {
-    devtool: 'source-map'
+    devtool: 'source-map',
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'windows.jQuery': 'jquery'
+      })
+    ]
   }
 }
