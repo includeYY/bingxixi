@@ -26,5 +26,12 @@ export default {
 
 body {
   background: #f5f5f5;
+  padding-bottom: 70px;
+}
+
+@media (min-width: 992px) {
+  body {
+    background: #f5f5f5;
+  }
 }
 </style>
