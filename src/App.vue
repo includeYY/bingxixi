@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <navigation v-bind:is-login="false" />
+    <bottom-nav />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue'
+import BottomNav from './components/BottomNav.vue'
 
 export default {
   name: 'app',
   components: {
-    Navigation
+    BottomNav
   }
 }
 </script>
