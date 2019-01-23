@@ -17,22 +17,24 @@
       </div>
     </div>
     <div class="panel panel-default classify-panel visible-xs visible-sm">
-      <div class="row">
-        <div class="col-xs-3 text-center classify-btn">
-          <img class="img-responsive center-block" src="../assets/images/eleme_logo.jpg">
-          <span class="text-center">饿了么</span>
-        </div>
-        <div class="col-xs-3 text-center classify-btn">
-          <img class="img-responsive center-block" src="../assets/images/meituan_logo.jpg">
-          <span class="text-center">美团</span>
-        </div>
-        <div class="col-xs-3 text-center classify-btn">
-          <img class="img-responsive center-block" src="../assets/images/taobao_logo.jpg">
-          <span class="text-center">淘宝</span>
-        </div>
-        <div class="col-xs-3 text-center classify-btn">
-          <img class="img-responsive center-block" src="../assets/images/jingdong_logo.jpg">
-          <span class="text-center">京东</span>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3 text-center classify-btn">
+            <img class="img-responsive center-block" src="../assets/images/eleme_logo.jpg">
+            <span class="text-center">饿了么</span>
+          </div>
+          <div class="col-xs-3 text-center classify-btn">
+            <img class="img-responsive center-block" src="../assets/images/meituan_logo.jpg">
+            <span class="text-center">美团</span>
+          </div>
+          <div class="col-xs-3 text-center classify-btn">
+            <img class="img-responsive center-block" src="../assets/images/taobao_logo.jpg">
+            <span class="text-center">淘宝</span>
+          </div>
+          <div class="col-xs-3 text-center classify-btn">
+            <img class="img-responsive center-block" src="../assets/images/jingdong_logo.jpg">
+            <span class="text-center">京东</span>
+          </div>
         </div>
       </div>
     </div>
@@ -57,8 +59,8 @@ export default {
 }
 
 .classify-panel {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .classify-btn {
