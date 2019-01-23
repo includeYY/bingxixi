@@ -52,7 +52,8 @@
       </nav>
     </div>
 
-    <nav class="navbar navbar-default navbar-fixed-bottom bottom-nav" role="navigation">
+    <!-- 手机底部导航栏 -->
+    <nav class="navbar navbar-default navbar-fixed-bottom bottom-nav visible-xs visible-sm" role="navigation">
       <div class="container-fluid bottom-container">
         <div class="row">
           <div class="col-xs-6 bottom-col">
@@ -80,7 +81,7 @@
           </div>
           <div class="modal-body">
             <ul class="nav nav-tabs nav-justified">
-              <li><a href="#login" data-toggle="tab">登录</a></li>
+              <li class="active"><a href="#login" data-toggle="tab">登录</a></li>
               <li><a href="#register" data-toggle="tab">注册</a></li>
             </ul>
             <div class="tab-content">
