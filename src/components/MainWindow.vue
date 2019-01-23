@@ -1,5 +1,6 @@
 <template>
   <div id="main-window">
+    <navigation v-bind:is-login="false" />
     <classify />
     <bill-list v-bind:bills="bills"/>
   </div>
@@ -8,6 +9,7 @@
 <script>
 import Classify from './Classify.vue'
 import BillList from './BillList.vue'
+import Navigation from './Navigation.vue'
 
 var mBills = [
   {
@@ -126,7 +128,8 @@ export default {
   },
   components: {
     Classify,
-    BillList
+    BillList,
+    Navigation
   }
 }
 </script>
