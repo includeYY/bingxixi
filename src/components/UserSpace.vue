@@ -3,7 +3,7 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navigation" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -11,12 +11,12 @@
           </button>
           <router-link class="navbar-brand" to="/">并夕夕</router-link>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+        <div class="collapse navbar-collapse" id="my-navigation">
+          <ul class="nav navbar-nav visible-xs">
+            <li class="m-btn active" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
+            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
+            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
+            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">已经结束的拼单</router-link></li>
           </ul>
         </div>
       </div>
@@ -25,10 +25,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active sidebar-btn" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
-            <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
-            <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
-            <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">已经结束的拼单</router-link></li>
+            <li class="active sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
+            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
+            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
+            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">已经结束的拼单</router-link></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -38,37 +38,19 @@
         </div>
       </div>
     </div>
-
-    <button class="btn btn-default visible-xs visible-sm user-btn" data-toggle="modal" data-target="#UserModal">
-      <span class="glyphicon glyphicon-align-justify"></span>
-    </button>
-
-    <!-- 手机用户管理模态框 -->
-    <div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLable" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <ul class="nav nav-pill">
-            <li class="active sidebar-btn" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
-            <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
-            <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
-            <li class="sidebar-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">已经结束的拼单</router-link></li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import '../assets/dashboard.css'
-import $ from 'jquery'
 
 export default {
   name: 'UserSpace',
   methods: {
     ChangeState: function (event) {
-      $('.sidebar-btn').removeClass('active')
+      $('.m-btn').removeClass('active')
       $(event.currentTarget).addClass('active')
+      $('#my-navigation').collapse('hide')
     }
   }
 }
@@ -78,16 +60,8 @@ export default {
 .right-fade-enter-active {
   transition: all .5s ease;
 }
-.right-fade-enter
-/* .slide-fade-leave-active for below version 2.1.8 */ {
+.right-fade-enter {
   transform: translateX(10px);
   opacity: 0;
-}
-
-.user-btn {
-  position: fixed;
-  margin-top: 80%;
-  margin-left: 80%;
-  display: block;
 }
 </style>
