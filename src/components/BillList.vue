@@ -39,8 +39,8 @@ export default {
 <style scrope>
 
 .bill-panel {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 @media (min-width: 992px) {
