@@ -11,6 +11,8 @@ import './assets/NavBarStyle.css'
 Vue.config.productionTip = false
 Vue.use(Router)
 
+axios.defaults.withCredentials = true
+
 Vue.prototype.Global = Global
 Vue.prototype.$axios = axios
 Vue.prototype.qs = qs

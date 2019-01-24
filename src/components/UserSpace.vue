@@ -50,7 +50,6 @@ export default {
     ChangeState: function (event) {
       $('.m-btn').removeClass('active')
       $(event.currentTarget).addClass('active')
-      $('#my-navigation').collapse('hide')
     }
   }
 }
