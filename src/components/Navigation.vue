@@ -20,11 +20,11 @@
           <div class="collapse navbar-collapse" id="my-navigation">
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <router-link v-if="this.Global.UserInfo.isLogin" to="/user">我的</router-link>
+                <router-link v-if="isLogin" to="/user">我的</router-link>
                 <router-link v-else to="/login-sign-up">登录/注册</router-link>
               </li>
               <li>
-                <a v-if="this.Global.UserInfo.isLogin" href="#">注销</a>
+                <router-link v-if="isLogin" to="/" @click.native="Logout">注销</router-link>
               </li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
@@ -57,7 +57,28 @@
 <script>
 
 export default {
-  name: 'navigation'
+  name: 'navigation',
+  data () {
+    return {
+      isLogin: this.Global.UserInfo.isLogin
+    }
+  },
+  methods: {
+    Logout: function (event) {
+      this.$axios({
+        method: 'get',
+        url: this.Global.SERVER_URL.logout
+      }).then((response) => {
+        console.log(response)
+        this.Global.UserInfo.isLogin = false
+        this.Global.UserInfo.username = ''
+        this.isLogin = false
+        console.log(this.Global.UserInfo.isLogin)
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+  }
 }
 </script>
 
