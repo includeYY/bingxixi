@@ -20,12 +20,11 @@
           <div class="collapse navbar-collapse" id="my-navigation">
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <router-link v-if="isLogin" to="/user">我的</router-link>
-                <!-- <a v-else data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#loginModal">登录/注册</a> -->
+                <router-link v-if="this.Global.UserInfo.isLogin" to="/user">我的</router-link>
                 <router-link v-else to="/login-sign-up">登录/注册</router-link>
               </li>
               <li>
-                <a v-if="isLogin" href="#">注销</a>
+                <a v-if="this.Global.UserInfo.isLogin" href="#">注销</a>
               </li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
