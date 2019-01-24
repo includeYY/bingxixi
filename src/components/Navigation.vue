@@ -21,7 +21,8 @@
             <ul class="nav navbar-nav navbar-right">
               <li>
                 <router-link v-if="isLogin" to="/user">我的</router-link>
-                <a v-else data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#loginModal">登录/注册</a>
+                <!-- <a v-else data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#loginModal">登录/注册</a> -->
+                <router-link v-else to="/login-sign-up">登录/注册</router-link>
               </li>
               <li>
                 <a v-if="isLogin" href="#">注销</a>

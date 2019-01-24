@@ -5,6 +5,7 @@ import UserSpace from '../components/UserSpace.vue'
 import UserInfo from '../components/UserInfo.vue'
 import Message from '../components/Message.vue'
 import BillList from '../components/BillList.vue'
+import LoginSignUp from '../components/LoginSignUp.vue'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ const routers = [
         component: BillList
       }
     ]
+  },
+  {
+    path: '/login-sign-up',
+    name: 'LoginSignUp',
+    component: LoginSignUp
   }
 ]
 
