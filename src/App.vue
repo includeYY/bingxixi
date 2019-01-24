@@ -12,6 +12,24 @@ export default {
   name: 'app',
   components: {
     BottomNav
+  },
+  created: function () {
+    let username = this.Cookie.get('username')
+    let password = this.Cookie.get('password')
+    if (typeof (username) !== 'undefined') {
+      this.$axios({
+        method: 'post',
+        url: this.Global.SERVER_URL.login,
+        data: this.qs.stringify({
+          username: username,
+          password: password
+        })
+      }).then((response) => {
+        console.log(response)
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>

@@ -90,8 +90,11 @@ export default {
         }).then((response) => {
           console.log(response)
           if (response.data.status === 0) {
-            this.Global.UserInfo.userName = response.data.username
+            this.Global.UserInfo.userName = this.username
             this.Global.UserInfo.isLogin = true
+            this.Cookie.set('username', this.username, { expires: 7, path: '' })
+            this.Cookie.set('password', this.password, { expires: 7, path: '' })
+            this.Cookie.set('isLogin', true, { expires: 7, path: '' })
             this.$router.push('/')
           } else {
             this.isLoginFail = true
@@ -129,6 +132,9 @@ export default {
           if (response.data.status === 0) {
             this.Global.UserInfo.userName = this.username
             this.Global.UserInfo.isLogin = true
+            this.Cookie.set('username', this.username, { expires: 7, path: '' })
+            this.Cookie.set('password', this.password, { expires: 7, path: '' })
+            this.Cookie.set('isLogin', true, { expires: 7, path: '' })
             this.$router.push('/')
           } else {
             this.isRegisterFail = true

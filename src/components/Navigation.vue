@@ -60,7 +60,7 @@ export default {
   name: 'navigation',
   data () {
     return {
-      isLogin: this.Global.UserInfo.isLogin
+      isLogin: typeof (this.Cookie.get('isLogin')) !== 'undefined'
     }
   },
   methods: {
@@ -72,6 +72,9 @@ export default {
         console.log(response)
         this.Global.UserInfo.isLogin = false
         this.Global.UserInfo.username = ''
+        this.Cookie.remove('username', { path: '' })
+        this.Cookie.remove('password', { path: '' })
+        this.Cookie.remove('isLogin', { path: '' })
         this.isLogin = false
         console.log(this.Global.UserInfo.isLogin)
       }).catch((error) => {

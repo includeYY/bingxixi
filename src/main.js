@@ -5,6 +5,7 @@ import routers from './router/router'
 import Global from './Global'
 import axios from 'axios'
 import qs from 'qs'
+import Cookie from 'js-cookie'
 import './assets/GlobalStyle.css'
 import './assets/NavBarStyle.css'
 
@@ -16,6 +17,7 @@ axios.defaults.withCredentials = true
 Vue.prototype.Global = Global
 Vue.prototype.$axios = axios
 Vue.prototype.qs = qs
+Vue.prototype.Cookie = Cookie
 
 const router = new Router({
   mode: 'history',
