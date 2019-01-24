@@ -2,6 +2,7 @@
   <div class="user-info">
     <div class="panel panel-default user-info-panel">
       <div class="panel-body">
+        <div v-if="isSave" class="alert alert-success">保存成功</div>
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-md-1 control-label" for="user-name">用户名</label>
@@ -35,7 +36,7 @@
           </div>
           <div class="form-group">
             <div class="col-md-offset-1 col-md-11">
-              <button type="submit" class="btn btn-success pull-right">保存</button>
+              <button type="button" @click="SaveInfo" class="btn btn-success pull-right">保存</button>
             </div>
           </div>
         </form>
@@ -53,7 +54,8 @@ export default {
       age: '',
       tel: '',
       sex: '',
-      address: ''
+      address: '',
+      isSave: false
     }
   },
   created: function () {
@@ -73,6 +75,28 @@ export default {
     }).catch((err) => {
       console.log(err)
     })
+  },
+  methods: {
+    SaveInfo: function () {
+      this.$axios({
+        method: 'post',
+        url: this.Global.SERVER_URL.update_information,
+        data: this.qs.stringify({
+          age: this.age,
+          sex: this.sex,
+          tel: this.tel,
+          address: this.address
+        })
+      }).then((response) => {
+        if (response.data.status === 0) {
+          this.isSave = true
+        } else {
+          console.log(response)
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>

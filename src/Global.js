@@ -4,7 +4,8 @@ const SERVER_URL = {
   login: SERVER + '/client/login.do',
   register: SERVER + '/client/register.do',
   logout: SERVER + '/client/logout.do',
-  get_user_info: SERVER + '/client/get_user_info.do'
+  get_user_info: SERVER + '/client/get_user_info.do',
+  update_information: SERVER + '/client/update_information.do'
 }
 
 var UserInfo = {
