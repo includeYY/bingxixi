@@ -2,7 +2,8 @@ const SERVER = 'http://bingxixi.damneasy.top:8080'
 
 const SERVER_URL = {
   login: SERVER + '/client/login.do',
-  register: SERVER + '/client/register.do'
+  register: SERVER + '/client/register.do',
+  logout: SERVER + '/client/logout.do'
 }
 
 var UserInfo = {
