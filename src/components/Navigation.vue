@@ -56,61 +56,9 @@
 </template>
 
 <script>
-import $ from 'jquery'
 
 export default {
-  name: 'navigation',
-  data () {
-    return {
-      error: false,
-      isSame: true,
-      isLogin: false,
-      userName: null,
-      password: null,
-      age: null,
-      tel: null,
-      address: null,
-      message: null
-    }
-  },
-  methods: {
-    UserRegister: function () {
-      this.isSame = $('#password').val() === $('#password-again').val()
-    },
-    Submit: function (e) {
-      if (!this.userName) {
-        this.error = true
-        this.message = '请输入用户名'
-        return false
-      } else if (!this.password) {
-        this.error = true
-        this.message = '请输入密码'
-        return false
-      } else {
-        this.error = false
-        this.$axios({
-          method: 'post',
-          url: this.Global.SERVER_URL.login,
-          data: this.qs.stringify({
-            username: this.userName,
-            password: this.password
-          })
-        }).then((response) => {
-          console.log(response)
-        }).catch((error) => {
-          console.log(error)
-        })
-      }
-    }
-  },
-  computed: {
-    ConfirmPassword: function () {
-      return {
-        'glyphicon-ok': this.isSame,
-        'glyphicon-remove': !this.isSame
-      }
-    }
-  }
+  name: 'navigation'
 }
 </script>
 
