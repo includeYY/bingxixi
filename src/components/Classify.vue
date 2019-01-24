@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="panel panel-default classify-panel visible-lg visible-md">
+    <div class="panel panel-default classify-panel visible-lg visible-md visible-sm">
       <div class="table-responsive">
         <table class="table classify-table">
           <tbody>
@@ -16,7 +16,7 @@
         </table>
       </div>
     </div>
-    <div class="panel panel-default classify-panel visible-xs visible-sm">
+    <div class="panel panel-default classify-panel visible-xs">
       <div class="container">
         <div class="row">
           <div class="col-xs-3 text-center classify-btn">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="navigation">
-      <nav class="navbar navbar-default visible-lg visible-md" role="navigation">
+      <nav class="navbar navbar-default visible-lg visible-md visible-sm" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
             <button
@@ -40,7 +40,7 @@
       </nav>
 
       <!-- 手机端顶部搜索栏 -->
-      <nav class="navbar navbar-default mobile-searchbar visible-xs visible-sm" role="navigation">
+      <nav class="navbar navbar-default mobile-searchbar visible-xs" role="navigation">
         <div class="container-fluid">
           <form class="navbar-form searchbar-form" role="search">
             <div class="form-group has-feedback searchbar-form">
@@ -65,29 +65,32 @@
               <li><a href="#register" data-toggle="tab">注册</a></li>
             </ul>
             <div class="tab-content">
+              <!-- 登录部分 -->
               <div class="tab-pane fade in active" id="login">
                 <form class="form-horizontal login-form" role="form">
                   <div class="form-group has-feedback">
                     <label for="username-login" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-10">
                       <span class="glyphicon glyphicon-user form-control-feedback" aria-hidden="true"></span>
-                      <input type="text" class="form-control" id="username-login" placeholder="请输入用户名">
+                      <input type="text" v-model="userName" class="form-control" id="username-login" placeholder="请输入用户名">
                     </div>
                   </div>
                   <div class="form-group has-feedback">
                     <label for="password-login" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                     <div class="col-sm-10">
                       <span class="glyphicon glyphicon-lock form-control-feedback" aria-hidden="true"></span>
-                      <input type="password" class="form-control" id="password-login" placeholder="请输入密码">
+                      <input type="password" v-model="password" class="form-control" id="password-login" placeholder="请输入密码">
                     </div>
                   </div>
+                  <p v-if="error" class="col-sm-12 text-danger">{{message}}</p>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <button type="button" v-on:click="LoginClick" class="btn btn-success login-button" data-dismiss="modal">登录</button>
+                      <button type="button" class="btn btn-success login-button" @click="Submit">登录</button>
                     </div>
                   </div>
                 </form>
               </div>
+              <!-- 注册部分 -->
               <div class="tab-pane fade" id="register">
                 <form class="form-horizontal login-form" id="login" role="form">
                   <div class="form-group has-feedback">
@@ -128,27 +131,50 @@
 
 <script>
 import $ from 'jquery'
-import Cookies from 'js-cookie'
 
 export default {
   name: 'navigation',
   data () {
     return {
+      error: false,
       isSame: true,
-      isLogin: false
+      isLogin: false,
+      userName: null,
+      password: null,
+      age: null,
+      tel: null,
+      address: null,
+      message: null
     }
   },
   methods: {
     UserRegister: function () {
       this.isSame = $('#password').val() === $('#password-again').val()
     },
-    LoginClick: function () {
-      var username = $('#username-login').val()
-      var password = $('#password-login').val()
-      Cookies.set('username', username)
-      Cookies.set('password', password)
-      console.log(Cookies.get('username'))
-      this.isLogin = true
+    Submit: function (e) {
+      if (!this.userName) {
+        this.error = true
+        this.message = '请输入用户名'
+        return false
+      } else if (!this.password) {
+        this.error = true
+        this.message = '请输入密码'
+        return false
+      } else {
+        this.error = false
+        this.$axios({
+          method: 'post',
+          url: this.Global.SERVER_URL.login,
+          data: this.qs.stringify({
+            username: this.userName,
+            password: this.password
+          })
+        }).then((response) => {
+          console.log(response)
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
     }
   },
   computed: {
