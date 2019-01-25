@@ -49,8 +49,15 @@ export default {
     }
   },
   created: function () {
-    this.bills = JSON.parse(this.$route.query.bills)
-    console.log(this.bills)
+    let list = this.$route.query.bills
+    if (typeof (list) !== 'undefined') {
+      if (list.length > 0) {
+        this.bills = JSON.parse(list)
+        console.log(this.bills)
+      }
+    } else {
+      alert('当前没有订单')
+    }
   }
 }
 </script>

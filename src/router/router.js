@@ -6,6 +6,7 @@ import UserInfo from '../components/UserInfo.vue'
 import Message from '../components/Message.vue'
 import BillList from '../components/BillList.vue'
 import LoginSignUp from '../components/LoginSignUp.vue'
+import MidLayer from '../components/MidLayer.vue'
 
 Vue.use(Router)
 
@@ -37,6 +38,10 @@ const routers = [
       {
         path: 'bill-info',
         component: BillList
+      },
+      {
+        path: 'mid-layer/:cas',
+        component: MidLayer
       }
     ]
   },

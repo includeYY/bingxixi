@@ -16,7 +16,7 @@
             <li class="m-btn active" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
             <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
             <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
-            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">已经结束的拼单</router-link></li>
+            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">历史拼单</router-link></li>
           </ul>
         </div>
       </div>
@@ -27,8 +27,8 @@
           <ul class="nav nav-sidebar">
             <li class="active sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
             <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
-            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
-            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">已经结束的拼单</router-link></li>
+            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/mid-layer/1">正在进行的拼单</router-link></li>
+            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/mid-layer/0">历史拼单</router-link></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

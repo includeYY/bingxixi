@@ -8,7 +8,9 @@ const SERVER_URL = {
   update_information: SERVER + '/client/update_information.do',
   get_active_list: SERVER + '/bill/get_active_list.do',
   list_by_shop: SERVER + '/bill/list_by_shop.do',
-  search_bill: SERVER + '/bill/search_bill.do'
+  search_bill: SERVER + '/bill/search_bill.do',
+  list_my_bill_all: SERVER + '/bill/manage/list_my_bill_all.do',
+  list_my_bill_active: SERVER + '/bill/manage/list_my_bill_active.do'
 }
 
 var UserInfo = {
