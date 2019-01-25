@@ -16,6 +16,7 @@
         </table>
       </div>
     </div>
+    <!-- 手机上的分类栏 -->
     <div class="panel panel-default classify-panel visible-xs">
       <div class="container">
         <div class="row">

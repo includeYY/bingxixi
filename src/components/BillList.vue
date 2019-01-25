@@ -33,8 +33,10 @@
 <script>
 export default {
   name: 'BillList',
-  props: {
-    bills: Array
+  data () {
+    return {
+      bills: []
+    }
   },
   methods: {
     GetImg: function (bill) {
@@ -45,6 +47,10 @@ export default {
         case '京东': return require('../assets/images/jingdong.jpg')
       }
     }
+  },
+  created: function () {
+    this.bills = JSON.parse(this.$route.query.bills)
+    console.log(this.bills)
   }
 }
 </script>

@@ -13,7 +13,13 @@ const routers = [
   {
     path: '/',
     name: 'MainWindow',
-    component: MainWindow
+    component: MainWindow,
+    children: [
+      {
+        path: 'bill-info',
+        component: BillList
+      }
+    ]
   },
   {
     path: '/user',

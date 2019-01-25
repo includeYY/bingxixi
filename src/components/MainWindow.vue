@@ -2,13 +2,12 @@
   <div id="main-window">
     <navigation v-bind:is-login="false" />
     <classify />
-    <bill-list v-bind:bills="bills"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Classify from './Classify.vue'
-import BillList from './BillList.vue'
 import Navigation from './Navigation.vue'
 
 export default {
@@ -20,7 +19,6 @@ export default {
   },
   components: {
     Classify,
-    BillList,
     Navigation
   },
   methods: {
@@ -31,7 +29,12 @@ export default {
       }).then((response) => {
         console.log(response)
         if (response.data.status === 0) {
-          this.bills = response.data.data.list
+          this.$router.push({
+            path: '/bill-info',
+            query: {
+              bills: JSON.stringify(response.data.data.list)
+            }
+          })
         }
       }).catch((err) => {
         console.log(err)
