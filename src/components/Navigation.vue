@@ -31,8 +31,8 @@
               <div class="form-group">
                 <input v-model="searchInfo" type="text" class="form-control" placeholder="拼单名称">
               </div>
-              <button type="button" class="btn btn-default">
-                <span @click="Search" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              <button @click="Search" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
               </button>
             </form>
           </div>
@@ -43,9 +43,15 @@
       <nav class="navbar navbar-default mobile-searchbar visible-xs" role="navigation">
         <div class="container-fluid">
           <form class="navbar-form searchbar-form" role="search">
-            <div class="form-group has-feedback searchbar-form">
-              <input type="text" v-model="searchInfo" class="form-control" placeholder="输入拼单信息">
-              <span @click="Search" class="glyphicon glyphicon-search form-control-feedback"></span>
+            <div class="form-group searchbar-form">
+              <div class="col-xs-11" style="padding: 0px">
+                <input type="search" v-model="searchInfo" class="form-control" placeholder="输入拼单信息">
+              </div>
+              <div class="col-xs-1" style="padding: 0px">
+                <button @click="Search" type="button" class="btn btn-default" style="height: 34px">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </div>
             </div>
           </form>
         </div>
