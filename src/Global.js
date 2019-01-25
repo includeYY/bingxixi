@@ -10,12 +10,14 @@ const SERVER_URL = {
   list_by_shop: SERVER + '/bill/list_by_shop.do',
   search_bill: SERVER + '/bill/search_bill.do',
   list_my_bill_all: SERVER + '/bill/manage/list_my_bill_all.do',
-  list_my_bill_active: SERVER + '/bill/manage/list_my_bill_active.do'
+  list_my_bill_active: SERVER + '/bill/manage/list_my_bill_active.do',
+  admin_login: SERVER + '/client/manager/admin_login.do'
 }
 
 var UserInfo = {
   userName: null,
-  isLogin: false
+  isLogin: false,
+  rights: null
 }
 
 export default {

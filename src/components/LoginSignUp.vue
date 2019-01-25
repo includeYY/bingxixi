@@ -82,7 +82,7 @@ export default {
         this.isLoginFail = false
         this.$axios({
           method: 'post',
-          url: this.Global.SERVER_URL.login,
+          url: this.GetUrl(),
           data: this.qs.stringify({
             username: this.username,
             password: this.password
@@ -92,9 +92,11 @@ export default {
           if (response.data.status === 0) {
             this.Global.UserInfo.userName = this.username
             this.Global.UserInfo.isLogin = true
+            this.Global.UserInfo.righs = response.data.data.rights
             this.Cookie.set('username', this.username, { expires: 7, path: '' })
             this.Cookie.set('password', this.password, { expires: 7, path: '' })
             this.Cookie.set('isLogin', true, { expires: 7, path: '' })
+            this.Cookie.set('rights', response.data.data.rights, { expires: 7, path: '' })
             this.$router.push('/')
           } else {
             this.isLoginFail = true
@@ -141,6 +143,13 @@ export default {
             this.message = response.data.msg
           }
         })
+      }
+    },
+    GetUrl: function () {
+      if (this.username === 'easy') {
+        return this.Global.SERVER_URL.admin_login
+      } else {
+        return this.Global.SERVER_URL.login
       }
     }
   }

@@ -3,7 +3,7 @@
     <div class="panel-body">
       <div class="container">
         <div class="row">
-          <div v-for="bill in bills" v-bind:key="bill.id" class="col-xs-12 col-sm-4 col-md-3">
+          <div v-for="bill in bills" :key="bill.id" @click="GetInfo(bill)" class="col-xs-12 col-sm-4 col-md-3">
             <table class="table">
               <tbody>
                 <tr>

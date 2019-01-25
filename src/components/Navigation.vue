@@ -82,6 +82,7 @@ export default {
         this.Cookie.remove('username', { path: '' })
         this.Cookie.remove('password', { path: '' })
         this.Cookie.remove('isLogin', { path: '' })
+        this.Cookie.remove('rights', { path: '' })
         this.isLogin = false
         console.log(this.Global.UserInfo.isLogin)
       }).catch((error) => {
