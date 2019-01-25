@@ -19,6 +19,25 @@ Vue.prototype.$axios = axios
 Vue.prototype.qs = qs
 Vue.prototype.Cookie = Cookie
 
+Vue.prototype.GetAllBills = function () {
+  this.$axios({
+    method: 'post',
+    url: this.Global.SERVER_URL.get_active_list
+  }).then((response) => {
+    console.log(response)
+    if (response.data.status === 0) {
+      this.$router.push({
+        path: '/bill-info',
+        query: {
+          bills: JSON.stringify(response.data.data.list)
+        }
+      })
+    }
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
 const router = new Router({
   mode: 'history',
   routes: routers

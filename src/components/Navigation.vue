@@ -29,10 +29,10 @@
             </ul>
             <form class="navbar-form navbar-right" role="search">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="拼单名称">
+                <input v-model="searchInfo" type="text" class="form-control" placeholder="拼单名称">
               </div>
               <button type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <span @click="Search" class="glyphicon glyphicon-search" aria-hidden="true"></span>
               </button>
             </form>
           </div>
@@ -44,8 +44,8 @@
         <div class="container-fluid">
           <form class="navbar-form searchbar-form" role="search">
             <div class="form-group has-feedback searchbar-form">
-              <input type="text" class="form-control" placeholder="输入拼单信息">
-              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              <input type="text" v-model="searchInfo" class="form-control" placeholder="输入拼单信息">
+              <span @click="Search" class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
           </form>
         </div>
@@ -60,7 +60,8 @@ export default {
   name: 'navigation',
   data () {
     return {
-      isLogin: typeof (this.Cookie.get('isLogin')) !== 'undefined'
+      isLogin: typeof (this.Cookie.get('isLogin')) !== 'undefined',
+      searchInfo: null
     }
   },
   methods: {
@@ -79,6 +80,23 @@ export default {
         console.log(this.Global.UserInfo.isLogin)
       }).catch((error) => {
         console.log(error)
+      })
+    },
+    Search: function () {
+      this.$axios({
+        method: 'post',
+        url: this.Global.SERVER_URL.search_bill,
+        data: this.qs.stringify({
+          keyword: this.searchInfo
+        })
+      }).then((response) => {
+        console.log('Search bill: ' + response)
+        this.$router.push({
+          path: '/bill-info',
+          query: {
+            bills: JSON.stringify(response.data.data.list)
+          }
+        })
       })
     }
   }

@@ -7,7 +7,8 @@ const SERVER_URL = {
   get_user_info: SERVER + '/client/get_user_info.do',
   update_information: SERVER + '/client/update_information.do',
   get_active_list: SERVER + '/bill/get_active_list.do',
-  list_by_shop: SERVER + '/bill/list_by_shop.do'
+  list_by_shop: SERVER + '/bill/list_by_shop.do',
+  search_bill: SERVER + '/bill/search_bill.do'
 }
 
 var UserInfo = {
