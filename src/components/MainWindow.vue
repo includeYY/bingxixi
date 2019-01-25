@@ -2,7 +2,9 @@
   <div id="main-window">
     <navigation v-bind:is-login="false" />
     <classify />
-    <router-view></router-view>
+    <transition name="right-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 

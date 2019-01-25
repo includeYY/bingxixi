@@ -15,7 +15,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <router-link class="navbar-brand" to="/">并夕夕</router-link>
+            <a class="navbar-brand" href="#">并夕夕</a>
           </div>
           <div class="collapse navbar-collapse" id="my-navigation">
             <ul class="nav navbar-nav navbar-right">
@@ -89,20 +89,9 @@ export default {
       })
     },
     Search: function () {
-      this.$axios({
-        method: 'post',
-        url: this.Global.SERVER_URL.search_bill,
-        data: this.qs.stringify({
-          keyword: this.searchInfo
-        })
-      }).then((response) => {
-        console.log('Search bill: ' + response)
-        this.$router.push({
-          path: '/bill-info',
-          query: {
-            bills: JSON.stringify(response.data.data.list)
-          }
-        })
+      this.Global.isRefresh = true
+      this.$router.push({
+        path: '/mid-layer/2/' + this.searchInfo
       })
     }
   }

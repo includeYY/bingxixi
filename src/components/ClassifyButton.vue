@@ -15,34 +15,9 @@ export default {
     ChangeState: function (event) {
       $('.btn').removeClass('active')
       $(event.currentTarget).addClass('active')
-      if (this.ShopName === '全部') {
-        this.GetAllBills()
-      } else {
-        console.log('Shopname' + this.ShopName)
-        this.$axios({
-          method: 'post',
-          url: this.Global.SERVER_URL.list_by_shop,
-          data: this.qs.stringify({
-            shop: this.ShopName
-          })
-        }).then((response) => {
-          console.log(response)
-          if (response.data.status === 0) {
-            if (response.data.data.list.length > 0) {
-              this.$router.push({
-                path: '/bill-info',
-                query: {
-                  bills: JSON.stringify(response.data.data.list)
-                }
-              })
-            } else {
-              alert('没有当前商家的拼单')
-            }
-          }
-        }).catch((err) => {
-          console.log(err)
-        })
-      }
+      this.$router.push({
+        path: '/mid-layer/3/' + this.ShopName
+      })
     }
   }
 }

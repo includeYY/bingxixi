@@ -19,6 +19,10 @@ const routers = [
       {
         path: 'bill-info',
         component: BillList
+      },
+      {
+        path: '/mid-layer/:cas/:key',
+        component: MidLayer
       }
     ]
   },

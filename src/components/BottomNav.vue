@@ -25,7 +25,11 @@ export default {
   name: 'BottomNav',
   methods: {
     GoToUserSpace: function () {
-      this.$router.push('/user')
+      if (typeof (this.Cookie.get('isLogin')) === 'undefined') {
+        this.$router.push('/login-sign-up')
+      } else {
+        this.$router.push('/user')
+      }
     },
     GoToIndex: function () {
       this.$router.push('/')
