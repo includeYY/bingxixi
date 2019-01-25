@@ -8,6 +8,7 @@ import qs from 'qs'
 import Cookie from 'js-cookie'
 import './assets/GlobalStyle.css'
 import './assets/NavBarStyle.css'
+import eventBus from './eventBus'
 
 Vue.config.productionTip = false
 Vue.use(Router)
@@ -18,6 +19,7 @@ Vue.prototype.Global = Global
 Vue.prototype.$axios = axios
 Vue.prototype.qs = qs
 Vue.prototype.Cookie = Cookie
+Vue.prototype.eventBus = eventBus
 
 Vue.prototype.GetAllBills = function () {
   this.$axios({

@@ -89,7 +89,7 @@ export default {
       })
     },
     Search: function () {
-      this.Global.isRefresh = true
+      this.eventBus.$emit('refresh', 'hello')
       this.$router.push({
         path: '/mid-layer/2/' + this.searchInfo
       })

@@ -1,5 +1,5 @@
 <template>
-  <button type="button" @click="ChangeState" v-if="ShopName == '全部'" class="btn btn-default active">{{ShopName}}</button>
+  <button type="button" id="all" @click="ChangeState" v-if="ShopName == '全部'" class="btn btn-default active">{{ShopName}}</button>
   <button type="button" @click="ChangeState" v-else class="btn btn-default">{{ShopName}}</button>
 </template>
 
@@ -19,6 +19,12 @@ export default {
         path: '/mid-layer/3/' + this.ShopName
       })
     }
+  },
+  mounted: function () {
+    this.eventBus.$on('refresh', function (val) {
+      $('.btn').removeClass('active')
+      $('#all').addClass('active')
+    })
   }
 }
 </script>
