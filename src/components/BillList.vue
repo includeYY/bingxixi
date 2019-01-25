@@ -8,12 +8,15 @@
               <tbody>
                 <tr>
                   <td rowspan="3">
-                    <img v-bind:src="bill.imgsrc">
+                    <img v-bind:src="GetImg(bill)">
                   </td>
                   <td class="text-left" id="product-name">{{bill.product}}</td>
                 </tr>
                 <tr>
                   <td class="text-left">{{bill.shop}}</td>
+                </tr>
+                <tr>
+                  <td class="text-left">{{bill.address}}</td>
                 </tr>
                 <tr>
                   <td class="text-left text-danger">{{bill.target}}</td>
@@ -32,6 +35,16 @@ export default {
   name: 'BillList',
   props: {
     bills: Array
+  },
+  methods: {
+    GetImg: function (bill) {
+      switch (bill.shop) {
+        case '美团': return require('../assets/images/meituan.jpg')
+        case '饿了么': return require('../assets/images/eleme.jpg')
+        case '淘宝': return require('../assets/images/taobao.jpg')
+        case '京东': return require('../assets/images/jingdong.jpg')
+      }
+    }
   }
 }
 </script>

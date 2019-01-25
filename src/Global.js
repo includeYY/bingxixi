@@ -5,7 +5,8 @@ const SERVER_URL = {
   register: SERVER + '/client/register.do',
   logout: SERVER + '/client/logout.do',
   get_user_info: SERVER + '/client/get_user_info.do',
-  update_information: SERVER + '/client/update_information.do'
+  update_information: SERVER + '/client/update_information.do',
+  get_active_list: SERVER + '/bill/get_active_list.do'
 }
 
 var UserInfo = {

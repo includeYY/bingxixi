@@ -11,125 +11,35 @@ import Classify from './Classify.vue'
 import BillList from './BillList.vue'
 import Navigation from './Navigation.vue'
 
-var mBills = [
-  {
-    id: 0,
-    imgsrc: require('../assets/images/eleme.jpg'),
-    product: '汉堡王',
-    shop: '饿了么',
-    target: '满30减10'
-  },
-  {
-    id: 1,
-    imgsrc: require('../assets/images/jingdong.jpg'),
-    product: '汉堡王',
-    shop: '京东',
-    target: '满30减10'
-  },
-  {
-    id: 2,
-    imgsrc: require('../assets/images/meituan.jpg'),
-    product: '香河肉饼',
-    shop: '美团',
-    target: '满30减10'
-  },
-  {
-    id: 3,
-    imgsrc: require('../assets/images/taobao.jpg'),
-    product: 'MH世界',
-    shop: '淘宝',
-    target: '买二送一'
-  },
-  {
-    id: 4,
-    imgsrc: require('../assets/images/jingdong.jpg'),
-    product: 'IKBC',
-    shop: '京东',
-    target: '满499减200'
-  },
-  {
-    id: 5,
-    imgsrc: require('../assets/images/eleme.jpg'),
-    product: '汉堡王',
-    shop: '饿了么',
-    target: '满30减10'
-  },
-  {
-    id: 6,
-    imgsrc: require('../assets/images/jingdong.jpg'),
-    product: '汉堡王',
-    shop: '京东',
-    target: '满30减10'
-  },
-  {
-    id: 7,
-    imgsrc: require('../assets/images/meituan.jpg'),
-    product: '香河肉饼',
-    shop: '美团',
-    target: '满30减10'
-  },
-  {
-    id: 8,
-    imgsrc: require('../assets/images/taobao.jpg'),
-    product: 'MH世界',
-    shop: '淘宝',
-    target: '买二送一'
-  },
-  {
-    id: 9,
-    imgsrc: require('../assets/images/jingdong.jpg'),
-    product: 'IKBC',
-    shop: '京东',
-    target: '满499减200'
-  },
-  {
-    id: 10,
-    imgsrc: require('../assets/images/eleme.jpg'),
-    product: '汉堡王',
-    shop: '饿了么',
-    target: '满30减10'
-  },
-  {
-    id: 11,
-    imgsrc: require('../assets/images/jingdong.jpg'),
-    product: '汉堡王',
-    shop: '京东',
-    target: '满30减10'
-  },
-  {
-    id: 12,
-    imgsrc: require('../assets/images/meituan.jpg'),
-    product: '香河肉饼',
-    shop: '美团',
-    target: '满30减10'
-  },
-  {
-    id: 13,
-    imgsrc: require('../assets/images/taobao.jpg'),
-    product: 'MH世界',
-    shop: '淘宝',
-    target: '买二送一'
-  },
-  {
-    id: 14,
-    imgsrc: require('../assets/images/jingdong.jpg'),
-    product: 'IKBC',
-    shop: '京东',
-    target: '满499减200'
-  }
-]
-
 export default {
   name: 'MainWindow',
   data () {
     return {
-      bills: mBills
+      bills: []
     }
   },
   components: {
     Classify,
     BillList,
     Navigation
+  },
+  methods: {
+    GetAllBills: function () {
+      this.$axios({
+        method: 'post',
+        url: this.Global.SERVER_URL.get_active_list
+      }).then((response) => {
+        console.log(response)
+        if (response.data.status === 0) {
+          this.bills = response.data.data.list
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  },
+  created: function () {
+    this.GetAllBills()
   }
 }
 </script>
