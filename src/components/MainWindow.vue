@@ -1,6 +1,6 @@
 <template>
   <div id="main-window">
-    <navigation v-bind:is-login="false" />
+    <navigation />
     <classify />
     <transition name="right-fade">
       <router-view></router-view>

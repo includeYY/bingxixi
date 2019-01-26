@@ -20,6 +20,9 @@
           <div class="collapse navbar-collapse" id="my-navigation">
             <ul class="nav navbar-nav navbar-right">
               <li>
+                <router-link v-if="isLogin" to="/release">发布拼单</router-link>
+              </li>
+              <li>
                 <router-link v-if="isLogin" to="/user">我的</router-link>
                 <router-link v-else to="/login-sign-up">登录/注册</router-link>
               </li>

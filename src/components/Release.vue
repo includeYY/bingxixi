@@ -1,6 +1,7 @@
 <template>
   <div class="release">
-    <div class="panel panel-default bargin-info-panel">
+    <navigation />
+    <div class="panel panel-default release-panel">
       <div class="panel-body">
         <div class="my-publish">
           <form class="form-horizontal" role="form" id="form1">
@@ -68,14 +69,20 @@
                 <!-- <input type="datetime" class="form-control" v-bind:value="timenow"> -->
               </div>
             </div>
-            <div class="col-md-offset-1 col-md-11">
-              <button
-                type="submit"
-                class="btn btn-success pull-right"
-                style="width:200px"
-                id="releaseBtn"
-                @click="onSubmit($event)"
-              >发布</button>
+            <div class="from-group">
+              <div class="alert alert-success" v-if="isSuccess">{{message}}</div>
+              <div class="alert alert-danger" v-if="isError">{{message}}</div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-1 col-md-11">
+                <button
+                  type="button"
+                  class="btn btn-success pull-right"
+                  style="width:200px"
+                  id="releaseBtn"
+                  @click="onSubmit($event)"
+                >发布</button>
+              </div>
             </div>
           </form>
         </div>
@@ -86,6 +93,7 @@
 
 <script>
 import FileInput from './FileInput.vue'
+import Navigation from './Navigation.vue'
 
 export default {
   name: 'Release',
@@ -97,7 +105,10 @@ export default {
       target: '',
       day: 0,
       minute: 0,
-      hour: 0
+      hour: 0,
+      isSuccess: false,
+      isError: false,
+      message: ''
     }
   },
   methods: {
@@ -137,48 +148,54 @@ export default {
         date.getMinutes() +
         ':' +
         date.getSeconds()
-      formData.append('target', this.target)
-      formData.append('endTime', endTime)
-      let config = {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
-      //   url修改成服务url
-      this.$axios.post(
-        this.Global.SERVER_URL.create_bill,
-        formData,
-        config
-      ).then((res) => {
-        if (res.status === 404) {
-          alert('404')
+
+      this.$axios({
+        method: 'post',
+        url: this.Global.SERVER_URL.create_bill,
+        data: this.qs.stringify({
+          product: this.barginName,
+          shop: this.shopName,
+          address: this.addr,
+          startTime: startTime,
+          endTime: endTime,
+          target: this.target,
+          product_img: '',
+          contact_img: ''
+        })
+      }).then((response) => {
+        if (response.data.status === 0) {
+          this.isSuccess = true
+          this.message = response.data.data
         } else {
-          if (res.data.status === 10) {
-            alert('登陆界面')
-            //    跳转
-          } else {
-            alert('成功发布')
-          }
+          this.isError = true
+          this.message = response.data.data
         }
-      }).catch((err) => {
-        console.log(err)
       })
     }
   },
   components: {
-    FileInput
+    FileInput,
+    Navigation
   }
 }
 </script>
 
 <style scoped>
-.my-publish {
-  margin-top: 100px;
-}
-
 m-block {
   min-width: 220px;
   width: 400px;
   min-height: 270px;
+}
+
+.release-panel {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+@media (min-width: 992px) {
+  .release-panel{
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 }
 </style>
