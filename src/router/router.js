@@ -10,6 +10,7 @@ import MidLayer from '../components/MidLayer.vue'
 import DeleteUser from '../components/DeleteUser.vue'
 import DeleteBill from '../components/DeleteBill.vue'
 import Release from '../components/Release.vue'
+import Detail from '../components/DetailPage.vue'
 
 Vue.use(Router)
 
@@ -69,6 +70,11 @@ const routers = [
     path: '/release',
     name: 'Release',
     component: Release
+  },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: Detail
   }
 ]
 

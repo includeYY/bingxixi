@@ -3,8 +3,8 @@
     <div class="panel-body">
       <div class="container">
         <div class="row">
-          <div v-for="bill in bills" :key="bill.id" class="col-xs-12 col-sm-4 col-md-3">
-            <button @click="GetInfo(bill)" type="button" class="btn btn-default">
+          <div v-for="(bill, key, index) in bills" :key="bill.id" class="col-xs-12 col-sm-4 col-md-3">
+            <button @click="GetInfo(index)" type="button" class="btn btn-default">
               <table class="table" style="margin-bottom: 0px">
                 <tbody>
                   <tr>
@@ -49,8 +49,14 @@ export default {
         case '京东': return require('../assets/images/jingdong.jpg')
       }
     },
-    GetInfo: function (bill) {
-      alert(bill.product)
+    GetInfo: function (index) {
+      console.log(index)
+      this.$router.push({
+        path: '/detail',
+        query: JSON.stringify({
+          billInfo: this.bills[index]
+        })
+      })
     }
   },
   created: function () {
