@@ -84,16 +84,7 @@
   </div>
 </template>
 
-<style scrop>
-m-block {
-  min-width: 220px;
-  width: 400px;
-  min-height: 270px;
-}
-</style>
-
 <script>
-import '../assets/why.css'
 import FileInput from './FileInput.vue'
 
 export default {
@@ -179,3 +170,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.my-publish {
+  margin-top: 100px;
+}
+
+m-block {
+  min-width: 220px;
+  width: 400px;
+  min-height: 270px;
+}
+</style>
