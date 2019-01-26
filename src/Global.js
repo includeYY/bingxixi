@@ -11,7 +11,10 @@ const SERVER_URL = {
   search_bill: SERVER + '/bill/search_bill.do',
   list_my_bill_all: SERVER + '/bill/manage/list_my_bill_all.do',
   list_my_bill_active: SERVER + '/bill/manage/list_my_bill_active.do',
-  admin_login: SERVER + '/client/manager/admin_login.do'
+  admin_login: SERVER + '/client/manager/admin_login.do',
+  delete_client: SERVER + '/client/manager/delete_client.do',
+  delete_bill: SERVER + '/client/manager/delete_bill.do',
+  check_user: SERVER + '/client/manager/check_user.do'
 }
 
 var UserInfo = {

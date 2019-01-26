@@ -21,20 +21,28 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-3 text-center classify-btn">
-            <img class="img-responsive center-block" src="../assets/images/eleme_logo.jpg">
-            <span class="text-center">饿了么</span>
+            <button @click="GetBills('饿了么')" type="button" class="btn btn-default">
+              <img class="img-responsive center-block" src="../assets/images/eleme_logo.png">
+              <span class="text-center">饿了么</span>
+            </button>
           </div>
           <div class="col-xs-3 text-center classify-btn">
-            <img class="img-responsive center-block" src="../assets/images/meituan_logo.jpg">
-            <span class="text-center">美团</span>
+            <button @click="GetBills('美团')" type="button" class="btn btn-default">
+              <img class="img-responsive center-block" src="../assets/images/meituan_logo.png">
+              <span class="text-center">美团</span>
+            </button>
           </div>
           <div class="col-xs-3 text-center classify-btn">
-            <img class="img-responsive center-block" src="../assets/images/taobao_logo.jpg">
-            <span class="text-center">淘宝</span>
+            <button @click="GetBills('淘宝')" type="button" class="btn btn-default">
+              <img class="img-responsive center-block" src="../assets/images/taobao_logo.png">
+              <span class="text-center">淘宝</span>
+            </button>
           </div>
           <div class="col-xs-3 text-center classify-btn">
-            <img class="img-responsive center-block" src="../assets/images/jingdong_logo.jpg">
-            <span class="text-center">京东</span>
+            <button @click="GetBills('京东')" type="button" class="btn btn-default">
+              <img class="img-responsive center-block" src="../assets/images/jingdong_logo.png">
+              <span class="text-center">京东</span>
+            </button>
           </div>
         </div>
       </div>
@@ -49,6 +57,13 @@ export default {
   name: 'classify',
   components: {
     ClassifyButton
+  },
+  methods: {
+    GetBills: function (shopName) {
+      this.$router.push({
+        path: '/mid-layer/3/' + shopName
+      })
+    }
   }
 }
 </script>

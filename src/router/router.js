@@ -7,6 +7,8 @@ import Message from '../components/Message.vue'
 import BillList from '../components/BillList.vue'
 import LoginSignUp from '../components/LoginSignUp.vue'
 import MidLayer from '../components/MidLayer.vue'
+import DeleteUser from '../components/DeleteUser.vue'
+import DeleteBill from '../components/DeleteBill.vue'
 
 Vue.use(Router)
 
@@ -46,6 +48,14 @@ const routers = [
       {
         path: 'mid-layer/:cas',
         component: MidLayer
+      },
+      {
+        path: 'delete-user',
+        component: DeleteUser
+      },
+      {
+        path: 'delete-bill',
+        component: DeleteBill
       }
     ]
   },
