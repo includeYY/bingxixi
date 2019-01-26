@@ -23,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="bill in bills" :key="bill.id">
+        <tr @click="BillClick" v-for="bill in bills" :key="bill.id">
           <td>{{bill.id}}</td>
           <td>{{bill.shop}}</td>
           <td>{{bill.product}}</td>
@@ -108,6 +108,9 @@ export default {
       }).catch((err) => {
         console.log(err)
       })
+    },
+    BillClick: function () {
+      alert('Hello')
     }
   },
   created: function () {
