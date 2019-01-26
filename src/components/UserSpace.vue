@@ -14,7 +14,6 @@
         <div class="collapse navbar-collapse" id="my-navigation">
           <ul class="nav navbar-nav visible-xs">
             <li class="m-btn active" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
-            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
             <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
             <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">历史拼单</router-link></li>
             <li class="sidebar-btn m-btn" v-if="rights" v-on:click="ChangeState"><router-link to="/user/delete-user">管理用户</router-link></li>
@@ -28,7 +27,6 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
-            <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/message">消息通知</router-link></li>
             <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/mid-layer/1">正在进行的拼单</router-link></li>
             <li class="sidebar-btn m-btn" v-on:click="ChangeState"><router-link to="/user/mid-layer/0">历史拼单</router-link></li>
             <li class="sidebar-btn m-btn" v-if="rights" v-on:click="ChangeState"><router-link to="/user/delete-user">管理用户</router-link></li>

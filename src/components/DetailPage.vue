@@ -2,8 +2,7 @@
   <div>
     <navigation />
     <div class="jumbotron">
-      <span class="left"></span>
-      <span class="right">
+      <span class="right" style="padding: 20px">
         <h3 class="head">{{product}}</h3>
         <div class="statement">
           <span>商家:</span>
@@ -22,7 +21,10 @@
           <span>{{endtime}}</span>
         </div>
         <div class="statement">
-          <p><a class="btn btn-primary btn-lg aaa" href="#" role="button" @click="onClick()">加入拼单</a></p>
+          <p><a class="btn btn-primary btn-lg aaa" href="#" role="button" @click="onClick()" data-toggle="modal" data-target="#info-dialog">加入拼单</a></p>
+        </div>
+        <div class="statement">
+          <p><a class="btn btn-primary btn-lg aaa" href="#" role="button" @click="Quit()" data-toggle="modal" data-target="#info-dialog">退出拼单</a></p>
         </div>
       </span>
     </div>
@@ -59,9 +61,28 @@
         </div>
         <div class="statement">
           <span >联系方式:</span>
-          <span>starttime</span>
+          <span>{{contact}}</span>
         </div>
         <div style="display: none">{{billID}}</div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="info-dialog" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="statement" style="margin-left: 0px">
+              <div v-if="isSuccess" class="alert alert-success">{{message}}</div>
+              <div v-if="isError" class="alert alert-danger">{{message}}</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -97,7 +118,7 @@
   overflow: hidden;
   float: right;
 }
-@media screen and (min-width: 1200px){
+@media (min-width: 1200px){
   .left {
     width: 33.33%;
     height: 380px;
@@ -106,8 +127,14 @@
     top: 0;
     width: 66%;
   }
+  .jumbotron{
+    background-color: white;
+    overflow-y: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 }
-@media screen and (min-width: 768px) and (max-width: 1200px){
+@media (min-width: 768px) and (max-width: 1200px){
   .left {
     width: 33.33%;
     height: 240px;
@@ -121,9 +148,9 @@
     overflow-y: auto;
     margin-left: 50px;
     margin-right: 50px;
+  }
 }
-}
-@media screen and (min-width: 375px) and (max-width: 768px){
+@media (min-width: 375px) and (max-width: 768px){
   .left {
     width: 100%;
     height: 315px;
@@ -134,7 +161,7 @@
     width: 100%;
   }
 }
-@media screen and (max-width: 375px){
+@media (max-width: 375px){
   .left {
     padding-left: 0;
     width: 100%;
@@ -152,7 +179,6 @@ import Navigation from './Navigation.vue'
 export default {
   data () {
     return {
-      // 转base64码后的data字段
       product: '',
       shop: '',
       address: '',
@@ -163,7 +189,11 @@ export default {
       targetshow: false,
       endtimeshow: false,
       updatetimeshow: false,
-      billID: 6
+      billID: '',
+      message: '',
+      isSuccess: false,
+      isError: false,
+      contact: ''
     }
   },
   created: function () {
@@ -172,34 +202,60 @@ export default {
     this.shop = billInfo.shop
     this.address = billInfo.address
     this.target = billInfo.target
-    this.starttime = billInfo.starttime
-    this.endtime = billInfo.endtime
-    this.updatetime = billInfo.updatetime
+    this.starttime = this.GetTime(billInfo.starttime)
+    this.endtime = this.GetTime(billInfo.endtime)
+    this.updatetime = this.GetTime(billInfo.updatetime)
+    this.billID = billInfo.id
     this.targetshow = true
     this.endtimeshow = true
     this.updatetimeshow = true
+    this.contact = billInfo.contact_img
   },
   methods: {
     onClick: function () {
-      // let formData = new FormData()
-      // formData.append('billID', this.billID)
-      // let config = {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data'
-      //   }
-      // }
-      // //   url修改成服务url
-      // axios.post('http://bingxixi.damneasy.top:8080/bill/manage/join_bill.do', formData, config).then((res) => {
-      //   if (res.status === 404) {
-      //     alert('404error')
-      //   }
-      //   if (res.data.status === 1) {
-      //     alert('拼单不存在或已参加')
-      //   }
-      //   if (res.data.status === 10) {
-      //     alert('未登录')
-      //   }
-      // })
+      this.$axios({
+        method: 'post',
+        url: this.Global.SERVER_URL.join_bill,
+        data: this.qs.stringify({
+          billID: this.billID
+        })
+      }).then((response) => {
+        console.log(response)
+        if (response.data.status === 0) {
+          this.isSuccess = true
+          this.isError = false
+          this.message = response.data.data
+        } else {
+          this.isError = true
+          this.isSuccess = false
+          this.message = response.data.msg
+        }
+      })
+    },
+    GetTime: function (time) {
+      let mTime = new Date(time)
+      return mTime.toLocaleDateString().replace(/\//g, '-') + ' ' + mTime.toTimeString().substr(0, 8)
+    },
+    Quit: function () {
+      this.$axios({
+        method: 'post',
+        url: this.Global.SERVER_URL.quit_bill,
+        data: this.qs.stringify({
+          billID: this.billID
+        })
+      }).then((response) => {
+        if (response.data.status === 0) {
+          this.isSuccess = true
+          this.isError = false
+          this.message = response.data.data
+        } else {
+          this.isError = true
+          this.isSuccess = false
+          this.message = response.data.msg
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
     }
   },
   components: {

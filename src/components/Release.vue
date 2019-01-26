@@ -11,7 +11,7 @@
                 <input type="text" class="form-control" v-model="barginName">
               </div>
             </div>
-            <div class="container">
+            <!-- <div class="container">
               <div class="row">
                 <div class="col-xs-12 col-md-3 m-block">
                   <label class="control-label">商品图示</label>
@@ -29,6 +29,12 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div> -->
+            <div class="form-group">
+              <label class="col-md-1 control-label">联系方式</label>
+              <div class="col-md-11">
+                <input type="url" class="form-control" v-model="contact">
               </div>
             </div>
             <div class="form-group">
@@ -92,7 +98,7 @@
 </template>
 
 <script>
-import FileInput from './FileInput.vue'
+// import FileInput from './FileInput.vue'
 import Navigation from './Navigation.vue'
 
 export default {
@@ -108,46 +114,21 @@ export default {
       hour: 0,
       isSuccess: false,
       isError: false,
-      message: ''
+      message: '',
+      contact: ''
     }
   },
   methods: {
     onSubmit: function (event) {
       event.preventDefault()
-      let formData = new FormData()
-      var date = new Date()
-      formData.append('product', this.barginName)
-      formData.append('shop', this.shopName)
-      formData.append('address', this.addr)
-      formData.append('billID', date.getSeconds() + date.getMilliseconds())
-      var startTime =
-        date.getFullYear() +
-        '-' +
-        (date.getMonth() + 1) +
-        '-' +
-        date.getDate() +
-        ' ' +
-        date.getHours() +
-        ':' +
-        date.getMinutes() +
-        ':' +
-        date.getSeconds()
-      formData.append('startTime', startTime)
+      let startTime = Date.parse(new Date())
+      let date = new Date()
       date.setMinutes(Number(date.getMinutes()) + Number(this.minute))
       date.setHours(Number(date.getHours()) + Number(this.hour))
       date.setDate(Number(date.getDate()) + Number(this.day))
-      var endTime =
-        date.getFullYear() +
-        '-' +
-        (date.getMonth() + 1) +
-        '-' +
-        date.getDate() +
-        ' ' +
-        date.getHours() +
-        ':' +
-        date.getMinutes() +
-        ':' +
-        date.getSeconds()
+      let endTime = Date.parse(date)
+
+      console.log(startTime + ' ' + endTime)
 
       this.$axios({
         method: 'post',
@@ -156,11 +137,11 @@ export default {
           product: this.barginName,
           shop: this.shopName,
           address: this.addr,
-          startTime: startTime,
-          endTime: endTime,
+          starttime: startTime,
+          endtime: endTime,
           target: this.target,
           product_img: '',
-          contact_img: ''
+          contact_img: this.contact
         })
       }).then((response) => {
         if (response.data.status === 0) {
@@ -171,10 +152,16 @@ export default {
           this.message = response.data.data
         }
       })
+    },
+    DealTime: function (input) {
+      if (input.toString().length === 1) {
+        return '0' + input.toString()
+      }
+      return input.toString()
     }
   },
   components: {
-    FileInput,
+    // FileInput,
     Navigation
   }
 }
