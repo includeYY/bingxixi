@@ -26,7 +26,7 @@ Vue.prototype.GetAllBills = function () {
     method: 'post',
     url: this.Global.SERVER_URL.get_active_list
   }).then((response) => {
-    console.log(response)
+    // console.log(response)
     if (response.data.status === 0) {
       this.$router.push({
         path: '/bill-info',
@@ -41,7 +41,6 @@ Vue.prototype.GetAllBills = function () {
 }
 
 const router = new Router({
-  mode: 'history',
   routes: routers
 })
 
