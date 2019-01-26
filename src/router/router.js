@@ -9,6 +9,7 @@ import LoginSignUp from '../components/LoginSignUp.vue'
 import MidLayer from '../components/MidLayer.vue'
 import DeleteUser from '../components/DeleteUser.vue'
 import DeleteBill from '../components/DeleteBill.vue'
+import Release from '../components/Release.vue'
 
 Vue.use(Router)
 
@@ -63,6 +64,11 @@ const routers = [
     path: '/login-sign-up',
     name: 'LoginSignUp',
     component: LoginSignUp
+  },
+  {
+    path: '/release',
+    name: 'Release',
+    component: Release
   }
 ]
 

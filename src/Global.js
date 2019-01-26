@@ -14,7 +14,8 @@ const SERVER_URL = {
   admin_login: SERVER + '/client/manager/admin_login.do',
   delete_client: SERVER + '/client/manager/delete_client.do',
   delete_bill: SERVER + '/client/manager/delete_bill.do',
-  check_user: SERVER + '/client/manager/check_user.do'
+  check_user: SERVER + '/client/manager/check_user.do',
+  create_bill: SERVER + '/bill/manage/create_bill.do'
 }
 
 var UserInfo = {
