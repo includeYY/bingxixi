@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     confirm: function () {
-      if (!this.user) {
+      if (!this.billID) {
         this.isError = true
         this.message = '订单号不能为空'
       } else {
@@ -72,9 +72,9 @@ export default {
         this.$axios({
           method: 'post',
           url: this.Global.SERVER_URL.delete_bill,
-          data: {
+          data: this.qs.stringify({
             billID: this.billID
-          }
+          })
         }).then((response) => {
           if (response.data.status === 0) {
             this.isError = true
