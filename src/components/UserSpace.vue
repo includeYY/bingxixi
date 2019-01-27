@@ -1,5 +1,6 @@
 <template>
   <div>
+    <bottom-nav />
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -14,8 +15,8 @@
         <div class="collapse navbar-collapse" id="my-navigation">
           <ul class="nav navbar-nav visible-xs">
             <li class="m-btn active" v-on:click="ChangeState"><router-link to="/user">资料设置</router-link></li>
-            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">正在进行的拼单</router-link></li>
-            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/bill-info">历史拼单</router-link></li>
+            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/mid-layer/1">正在进行的拼单</router-link></li>
+            <li class="m-btn" v-on:click="ChangeState"><router-link to="/user/mid-layer/0">历史拼单</router-link></li>
             <li class="sidebar-btn m-btn" v-if="rights" v-on:click="ChangeState"><router-link to="/user/delete-user">管理用户</router-link></li>
             <li class="sidebar-btn m-btn" v-if="rights" v-on:click="ChangeState"><router-link to="/user/delete-bill">管理拼单</router-link></li>
           </ul>
@@ -45,9 +46,13 @@
 
 <script>
 import '../assets/dashboard.css'
+import BottomNav from './BottomNav.vue'
 
 export default {
   name: 'UserSpace',
+  components: {
+    BottomNav
+  },
   data () {
     return {
       rights: this.Cookie.get('rights') === 'a'
@@ -69,5 +74,8 @@ export default {
 .right-fade-enter {
   transform: translateX(10px);
   opacity: 0;
+}
+.main {
+  padding: 20px;
 }
 </style>

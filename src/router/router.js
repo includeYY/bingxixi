@@ -11,6 +11,7 @@ import DeleteUser from '../components/DeleteUser.vue'
 import DeleteBill from '../components/DeleteBill.vue'
 import Release from '../components/Release.vue'
 import Detail from '../components/DetailPage.vue'
+import BillInfo from '../components/BillInfo.vue'
 
 Vue.use(Router)
 
@@ -45,7 +46,7 @@ const routers = [
       },
       {
         path: 'bill-info',
-        component: BillList
+        component: BillInfo
       },
       {
         path: 'mid-layer/:cas',

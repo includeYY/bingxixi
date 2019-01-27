@@ -17,9 +17,9 @@ export default {
           if (response.data.status === 0) {
             this.$router.push({
               path: '/user/bill-info',
-              query: JSON.stringify({
-                bills: response.data.data.list
-              })
+              query: {
+                bills: JSON.stringify(response.data.data.list)
+              }
             })
           } else {
             this.$router.push({
@@ -32,16 +32,16 @@ export default {
       } else {
         this.$axios({
           method: 'post',
-          url: this.Global.SERVER_URL.list_my_bill_all
+          url: this.Global.SERVER_URL.list_my_bill_active
         }).then((response) => {
           console.log('GetMyActiveBill: ')
           console.log(response)
           if (response.data.status === 0) {
             this.$router.push({
               path: '/user/bill-info',
-              query: JSON.stringify({
-                bills: response.data.data.list
-              })
+              query: {
+                bills: JSON.stringify(response.data.data.list)
+              }
             })
           } else {
             this.$router.push({
@@ -117,6 +117,10 @@ export default {
       this.Search()
     } else if (cas === '3') {
       this.GetBillByShop()
+    } else if (cas === '4') {
+      this.$router.push({
+        path: '/'
+      })
     }
   }
 }
