@@ -15,7 +15,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <router-link class="navbar-brand" to="/">并夕夕</router-link>
+            <router-link class="navbar-brand" to="/user/mid-layer/4">并夕夕</router-link>
           </div>
           <div class="collapse navbar-collapse" id="my-navigation">
             <ul class="nav navbar-nav navbar-right">
