@@ -41,6 +41,7 @@ Vue.prototype.GetAllBills = function () {
 }
 
 const router = new Router({
+  mode: 'history',
   routes: routers
 })
 
