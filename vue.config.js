@@ -1,6 +1,9 @@
 const webpack = require('webpack')
 
 module.exports = {
+  devServer: {
+    port: 80
+  },
   configureWebpack: {
     devtool: 'source-map',
     plugins: [
@@ -11,5 +14,5 @@ module.exports = {
       })
     ]
   },
-  publicPath: '/dist/'
+  publicPath: '/'
 }
