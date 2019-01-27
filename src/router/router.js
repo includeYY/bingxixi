@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import MainWindow from '../components/MainWindow.vue'
 import UserSpace from '../components/UserSpace.vue'
 import UserInfo from '../components/UserInfo.vue'
-import Message from '../components/Message.vue'
 import BillList from '../components/BillList.vue'
 import LoginSignUp from '../components/LoginSignUp.vue'
 import MidLayer from '../components/MidLayer.vue'
@@ -12,6 +11,7 @@ import DeleteBill from '../components/DeleteBill.vue'
 import Release from '../components/Release.vue'
 import Detail from '../components/DetailPage.vue'
 import BillInfo from '../components/BillInfo.vue'
+import ChangePassword from '../components/ChangePassword.vue'
 
 Vue.use(Router)
 
@@ -41,10 +41,6 @@ const routers = [
         component: UserInfo
       },
       {
-        path: 'message',
-        component: Message
-      },
-      {
         path: 'bill-info',
         component: BillInfo
       },
@@ -59,6 +55,10 @@ const routers = [
       {
         path: 'delete-bill',
         component: DeleteBill
+      },
+      {
+        path: 'change-password',
+        component: ChangePassword
       }
     ]
   },

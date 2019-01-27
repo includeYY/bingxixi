@@ -18,7 +18,8 @@ const SERVER_URL = {
   create_bill: SERVER + '/bill/manage/create_bill.do',
   detail: SERVER + '/bill/detail.do',
   join_bill: SERVER + '/bill/manage/join_bill.do',
-  quit_bill: SERVER + '/bill/manage/quit_bill.do'
+  quit_bill: SERVER + '/bill/manage/quit_bill.do',
+  reset_password: SERVER + '/client/reset_password.do'
 }
 
 var UserInfo = {
