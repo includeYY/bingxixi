@@ -121,12 +121,12 @@ export default {
   methods: {
     onSubmit: function (event) {
       event.preventDefault()
-      let startTime = Date.parse(new Date())
       let date = new Date()
+      let startTime = (date.getFullYear()) + '-' + this.DealTime(date.getMonth() + 1) + '-' + this.DealTime(date.getDate()) + ' ' + this.DealTime(date.getHours()) + ':' + this.DealTime(date.getMinutes()) + ':' + this.DealTime(date.getSeconds())
       date.setMinutes(Number(date.getMinutes()) + Number(this.minute))
       date.setHours(Number(date.getHours()) + Number(this.hour))
       date.setDate(Number(date.getDate()) + Number(this.day))
-      let endTime = Date.parse(date)
+      let endTime = (date.getFullYear()) + '-' + this.DealTime(date.getMonth() + 1) + '-' + this.DealTime(date.getDate()) + ' ' + this.DealTime(date.getHours()) + ':' + this.DealTime(date.getMinutes()) + ':' + this.DealTime(date.getSeconds())
 
       console.log(startTime + ' ' + endTime)
 
@@ -144,12 +144,13 @@ export default {
           contact_img: this.contact
         })
       }).then((response) => {
+        console.log(response)
         if (response.data.status === 0) {
           this.isSuccess = true
           this.message = response.data.data
         } else {
           this.isError = true
-          this.message = response.data.data
+          this.message = response.data.msg
         }
       })
     },
