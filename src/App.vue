@@ -1,18 +1,13 @@
 <template>
   <div id="app">
-    <bottom-nav />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import BottomNav from './components/BottomNav.vue'
 
 export default {
   name: 'app',
-  components: {
-    BottomNav
-  },
   created: function () {
     let username = this.Cookie.get('username')
     let password = this.Cookie.get('password')
